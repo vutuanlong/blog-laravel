@@ -13,10 +13,11 @@ class PostFactory extends Factory {
 	 */
 	public function definition() {
 		return [
-			'title'   => $this->faker->sentence,
-			'slug'    => $this->faker->slug,
-			'excerpt' => $this->faker->sentence,
-			'body'    => $this->faker->sentence,
+			'category_id' => $this->faker->randomDigit,
+			'title'       => $this->faker->sentence,
+			'slug'        => $this->faker->slug,
+			'excerpt'     => $this->faker->sentence,
+			'body'        => $this->faker->sentence,
 		];
 	}
 }
