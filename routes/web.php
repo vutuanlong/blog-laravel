@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostsController;
 use App\Models\Post;
 use App\Models\Category;
 
@@ -15,26 +16,9 @@ use App\Models\Category;
 |
 */
 
-Route::get('/', function () {
-	// return view('welcome');
+Route::get( '/', [ PostsController::class, 'index' ] );
 
-	// $posts = Post::all();
-	$posts = Post::latest();
-
-	if ( request( 'search' ) ) {
-		$posts->where( 'title', 'like', '%' . request( 'search' ) . '%' );
-	}
-
-	return view( 'home', [
-		'posts' => $posts->get(),
-	] );
-});
-
-Route::get( 'posts/{post:slug}', function ( Post $post ) {
-	return view( 'post', [
-		'post' => $post,
-	] );
-} );
+Route::get( 'posts/{post:slug}', [ PostsController::class, 'show' ] );
 
 Route::get( 'categories/{category:slug}', function( Category $category ) {
 	return view( 'home', [
