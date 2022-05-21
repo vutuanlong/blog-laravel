@@ -17,8 +17,16 @@ use App\Models\Category;
 
 Route::get('/', function () {
 	// return view('welcome');
+
+	// $posts = Post::all();
+	$posts = Post::latest();
+
+	if ( request( 'search' ) ) {
+		$posts->where( 'title', 'like', '%' . request( 'search' ) . '%' );
+	}
+
 	return view( 'home', [
-		'posts' => Post::all(),
+		'posts' => $posts->get(),
 	] );
 });
 
