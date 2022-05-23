@@ -82,5 +82,6 @@
 				/>
 			@endforeach
 		</div>
+		{{ $posts->links() }}
 	</main>
 @endsection

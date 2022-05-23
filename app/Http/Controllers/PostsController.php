@@ -14,7 +14,8 @@ class PostsController extends Controller {
 		}
 
 		return view( 'home', [
-			'posts' => $posts->get(),
+			'posts' => $posts->paginate( 9 ),
+			// 'posts' => $posts->get(),
 		] );
 	}
 
