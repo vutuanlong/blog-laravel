@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\RegisterController;
 use App\Models\Post;
 use App\Models\Category;
 
@@ -25,3 +26,6 @@ Route::get( 'categories/{category:slug}', function( Category $category ) {
 		'posts' => $category->post,
 	] );
 } );
+
+Route::get( 'register', [ RegisterController::class, 'create' ] );
+Route::post( 'register', [ RegisterController::class, 'store' ] );
