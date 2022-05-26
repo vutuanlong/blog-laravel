@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Validation\Rule;
+use Symfony\Component\HttpFoundation\Response;
 
 class PostsController extends Controller {
 	public function index() {
@@ -23,5 +25,23 @@ class PostsController extends Controller {
 		return view( 'post', [
 			'post' => $post,
 		] );
+	}
+
+	public function create() {
+		return view( 'admin.create' );
+	}
+
+	public function store() {
+		$attributes = request()->validate( [
+			'title'       => 'required',
+			'slug'        => [ 'required', Rule::unique( 'posts', 'slug' ) ],
+			'excerpt'     => 'required',
+			'body'        => 'required',
+			'category_id' => [ 'required', Rule::exists( 'categories', 'id' ) ],
+		] );
+
+		Post::create( $attributes );
+
+		return redirect( '/' );
 	}
 }
