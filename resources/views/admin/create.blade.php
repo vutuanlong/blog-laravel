@@ -3,7 +3,7 @@
 @section( 'main' )
 	<main class="max-w-lg mx-auto mt-6 border border-gray-200 p-6 rounded-xl">
 		<h1 class="text-center font-bold text-xl">Create Post</h1>
-		<form method="POST" action="/admin/posts">
+		<form method="POST" action="/admin/posts" enctype="multipart/form-data">
 			@csrf
 			<div class="mb-6">
 				<label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="title">Title</label>
@@ -30,6 +30,15 @@
 			@error( 'slug' )
 				<p class="text-red-500 text-xs mt-2">{{ $message }}</p>
 			@enderror
+
+			<div class="mb-6">
+				<label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="thumbnail">Thumbnail</label>
+				<input
+					type="file"
+					class="border border-gay-400 p-2 w-full"
+					name="thumbnail"
+					id="thumbnail">
+			</div>
 
 			<div class="mb-6">
 				<label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="excerpt">Excerpt</label>
