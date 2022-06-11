@@ -12,7 +12,7 @@
 					<option disabled selected>
 						<span class="text-xs font-bold uppercase">Welcome {{ auth()->user()->name }}</span>
 					</option>
-					<option><a href="/admin/posts">Dashboard</a></option>
+					<option><a href="/admin/">Dashboard</a></option>
 				</select>
 
 				<svg class="transform -rotate-90 absolute pointer-events-none" style="right: 12px;" width="22"
@@ -25,7 +25,7 @@
 					</g>
 				</svg>
 			</div>
-			<a href="/admin/posts">Dashboard</a>
+			<a href="/admin/">Dashboard</a>
 			<form method="POST" action="/logout" class="text-xs ml-3">
 				@csrf
 				<button type="submit">Log Out</button>

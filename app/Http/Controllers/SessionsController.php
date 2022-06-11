@@ -18,7 +18,7 @@ class SessionsController extends Controller {
 
 		if ( auth()->attempt( $attributes ) ) {
 			session()->regenerate();
-			return redirect( '/' );
+			return redirect( '/admin' );
 		}
 
 		// Auth failed

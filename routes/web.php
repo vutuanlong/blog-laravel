@@ -38,7 +38,7 @@ Route::post( 'logout', [ SessionsController::class, 'destroy' ] )->middleware( '
 
 
 // Admin
-Route::get( 'admin/posts', [ AdminPostsController::class, 'index' ] )->middleware( 'admin' );
+Route::get( 'admin/', [ AdminPostsController::class, 'index' ] )->middleware( 'admin' );
 Route::get( 'admin/posts/create', [ AdminPostsController::class, 'create' ] )->middleware( 'admin' );
 Route::post( 'admin/posts', [ AdminPostsController::class, 'store' ] )->middleware( 'admin' );
 Route::get( 'admin/posts/{post}/edit', [ AdminPostsController::class, 'edit' ] )->middleware( 'admin' );
