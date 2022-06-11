@@ -2,3 +2,9 @@ article {
 	border-bottom: 1px solid #ccc;
 	padding-bottom: 20px;
 }
+
+.post-item .thumbnail {
+	width: 100%;
+	max-height: 357px;
+	object-fit: cover;
+}
